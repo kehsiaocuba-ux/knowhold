@@ -1,0 +1,19 @@
+# secrets: never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# build output and local data
+dist/
+build/
+node_modules/
+*.log
+hof.local.json
