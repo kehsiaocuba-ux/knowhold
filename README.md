@@ -31,3 +31,7 @@ Not runnable yet. This section will be updated with the first playable prototype
 
 - Code: MIT, see [LICENSE](LICENSE).
 - Question content will be original or from openly licensed sources, with each source's license listed in `data/`.
+
+---
+
+*Dedicated to my beautiful daughter, from papa.*
