@@ -21,7 +21,7 @@ Families, classrooms and friends who like trivia and want a game with strategy a
 
 ## Built with
 
-To be decided (the rules engine will be a small library with tests; see the roadmap).
+TypeScript: the rules engine is a small library with tests, with a web interface on top.
 
 ## How to run it
 
