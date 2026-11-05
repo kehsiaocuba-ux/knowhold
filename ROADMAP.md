@@ -6,14 +6,14 @@ Planned work, in order. Each item becomes one or more GitHub issues.
 - [x] Repository, MIT license, README
 - [x] RULES.md drafted from the handwritten notes
 - [ ] Settle the open questions at the end of RULES.md
-- [ ] Choose the language and project layout for the engine
+- [x] Choose the language and project layout for the engine (TypeScript, Vitest)
 - [ ] Choose the final project name and check it is not taken
 
 ## Phase 1: Rules engine
 - [ ] Board model (squares, order, laps)
 - [ ] Dice and movement
-- [ ] Scoring table and ownership
-- [ ] Rent formula with levels and same-subject multiplier
+- [x] Scoring table and ownership
+- [x] Rent formula with levels and same-subject multiplier
 - [ ] Elimination and win detection
 - [ ] Unit tests covering every table in RULES.md
 

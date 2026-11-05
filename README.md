@@ -25,7 +25,7 @@ TypeScript: the rules engine is a small library with tests, with a web interface
 
 ## How to run it
 
-Not runnable yet. This section will be updated with the first playable prototype.
+Not playable yet. To run the tests: `npm install`, then `npm test`.
 
 ## Questions and licensing
 

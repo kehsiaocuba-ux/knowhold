@@ -14,3 +14,8 @@ One short entry per working day. Newest at the bottom.
 - Day 5: rent formula and the same-subject multiplier, with the tables from RULES.md as tests.
 - Day 6: elimination and win detection.
 - Day 7: question format and the first small English set.
+
+## Day 2
+- Chose TypeScript with Vitest and set up the project.
+- Added dice with a seedable random source, plus tests.
+- Added scoring, ownership, rent and level rules, with every table from RULES.md as tests (21 passing).
