@@ -1,0 +1,16 @@
+{
+  "name": "knowhold",
+  "version": "0.1.0",
+  "description": "A trivia board game where knowledge decides who owns the board.",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
