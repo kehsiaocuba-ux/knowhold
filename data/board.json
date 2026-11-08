@@ -1,0 +1,9 @@
+{
+  "name": "standard-40",
+  "squares": [
+    "start", "art", "history", "sports", "math", "geography", "biology", "physics", "chemistry", "any", "quick",
+    "art", "history", "addPoints", "sports", "math", "forward", "geography", "biology", "subtractPoints", "physics", "chemistry",
+    "quick", "art", "history", "back", "sports", "math", "any", "geography", "biology", "addPoints", "physics", "chemistry",
+    "subtractPoints", "back", "distributePoints", "forward", "any", "quick"
+  ]
+}
