@@ -14,7 +14,7 @@ Planned work, in order. Each item becomes one or more GitHub issues.
 - [x] Dice and movement
 - [x] Scoring table and ownership
 - [x] Rent formula with levels and same-subject multiplier
-- [ ] Elimination and win detection
+- [x] Elimination and win detection
 - [ ] Unit tests covering every table in RULES.md
 
 ## Phase 2: Questions

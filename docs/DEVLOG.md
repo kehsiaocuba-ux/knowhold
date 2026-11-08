@@ -24,3 +24,7 @@ One short entry per working day. Newest at the bottom.
 
 ## Day 3
 - Added movement along the board and the +100 lap bonus (landing on or passing Start), with tests (45 passing).
+
+## Day 4
+- Added game state, turn flow, rent resolution and elimination, with tests (76 passing).
+- Ran simulated games: with equal skill the game can fail to end, so a stalemate rule is now an open question in RULES.md.

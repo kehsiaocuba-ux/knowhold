@@ -57,7 +57,7 @@ Answer **5 questions** of that subject. Points earned depend on correct answers:
 You may take the test again. If you answer all **5 correctly**, you earn the points and the square goes up one level (level 1 to 2, level 2 to 3).
 
 - Levels run from **1 to 3**.
-- **TBD:** points awarded when you score less than 5 on your own square.
+- **TBD:** points awarded when you score less than 5 on your own square. The engine currently uses the same points table as a claim (placeholder).
 
 ### 5.3 Landing on another player's square (rent)
 
@@ -188,3 +188,4 @@ The author has additional sheets (not yet available) covering training sections,
 8. Negotiation rules.
 9. Tie-break when two players are eliminated on the same turn.
 10. Game HOF ranking order.
+11. Stalemate between equally skilled players. In simulated games with equal skill the game often never ends, because the lap bonus and test points outweigh rent (2 players at 80% skill: 137 of 150 games unfinished after 4000 turns). With clearly different skill the better player always wins in about 90 to 270 turns. Options: a turn or lap limit after which the most points wins, a smaller or shrinking lap bonus, or rent that grows over time.
