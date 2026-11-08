@@ -13,7 +13,7 @@ Knowhold is a trivia board game with property-style ownership. Players (or teams
 
 - 2 or more players, or two teams with any number of members each (see section 9).
 - Every player or team starts with **500 points**.
-- Every full lap around the board earns **+100 points**.
+- Every lap around the board earns **+100 points**, once per lap. A lap is completed by landing on or passing Start. Moving backward never removes a bonus and never pays the same lap twice.
 
 ## 3. Board (page 1)
 
@@ -27,7 +27,7 @@ The board is a closed track. Squares:
 | Quick | Quick game square, cannot be owned (section 7). **TBD:** which Quick game is played? |
 | Forward / Back | Special squares (section 8) |
 
-**TBD:** total number of squares and their exact order (the sketch shows an S-shaped track).
+The board has **40 squares** to start, stored as data in [`data/board.json`](data/board.json) so the size and order are easy to change. The first 11 squares follow the sketch on page 1; the rest are a first arrangement. Composition: 1 Start, 3 of each of the 8 subjects, 3 Any, 3 Quick, 2 Forward, 2 Back, 2 Add points, 2 Subtract points, 1 Distribute points.
 
 ## 4. A turn (page 2)
 
@@ -178,7 +178,7 @@ The author has additional sheets (not yet available) covering training sections,
 
 ## 12. Open questions (collected)
 
-1. Exact board size and square order.
+1. ~~Exact board size and square order.~~ Decided: 40 squares to start, in data/board.json.
 2. Does the "Any" square let the player choose the subject?
 3. Which Quick game is played on the Quick square?
 4. Points for scoring below 5 on your own square.

@@ -19,3 +19,8 @@ One short entry per working day. Newest at the bottom.
 - Chose TypeScript with Vitest and set up the project.
 - Added dice with a seedable random source, plus tests.
 - Added scoring, ownership, rent and level rules, with every table from RULES.md as tests (21 passing).
+- Opened the first 8 GitHub issues from the roadmap.
+- Settled the board size: 40 squares, stored as data. Added the board model with validation.
+
+## Day 3
+- Added movement along the board and the +100 lap bonus (landing on or passing Start), with tests (45 passing).

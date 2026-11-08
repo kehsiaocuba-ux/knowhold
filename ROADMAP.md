@@ -10,8 +10,8 @@ Planned work, in order. Each item becomes one or more GitHub issues.
 - [ ] Choose the final project name and check it is not taken
 
 ## Phase 1: Rules engine
-- [ ] Board model (squares, order, laps)
-- [ ] Dice and movement
+- [x] Board model (squares, order, laps)
+- [x] Dice and movement
 - [x] Scoring table and ownership
 - [x] Rent formula with levels and same-subject multiplier
 - [ ] Elimination and win detection
