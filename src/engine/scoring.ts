@@ -1,16 +1,16 @@
 /**
  * Scoring, ownership and rent rules for subject squares.
  * Source of truth: RULES.md sections 5.1 to 5.4.
+ * The numbers come from a Rules object (default: the original design notes).
  */
+
+import { DEFAULT_RULES, type Rules } from "./rules";
 
 export const QUESTIONS_PER_TEST = 5;
 export const MIN_LEVEL = 1;
 export const MAX_LEVEL = 3;
-export const BASE_RENT = 100;
+export const BASE_RENT = DEFAULT_RULES.baseRent;
 export const MAX_SAME_SUBJECT_MULTIPLIER = 3;
-
-/** Points earned for 0 to 5 correct answers (RULES.md 5.1). */
-const POINTS_BY_CORRECT = [0, 10, 20, 30, 60, 100] as const;
 
 function assertCorrect(correct: number): void {
   if (!Number.isInteger(correct) || correct < 0 || correct > QUESTIONS_PER_TEST) {
@@ -25,9 +25,15 @@ function assertLevel(level: number): void {
 }
 
 /** Points earned for the number of correct answers out of 5. */
-export function pointsForCorrect(correct: number): number {
+export function pointsForCorrect(correct: number, rules: Rules = DEFAULT_RULES): number {
   assertCorrect(correct);
-  return POINTS_BY_CORRECT[correct] as number;
+  return rules.pointsTable[correct] as number;
+}
+
+/** Rent reduction for the number of correct answers at level 1. */
+export function rentDiscountForCorrect(correct: number, rules: Rules = DEFAULT_RULES): number {
+  assertCorrect(correct);
+  return rules.rentDiscount[correct] as number;
 }
 
 /** 4 or 5 correct answers on an unowned square claim it at level 1. */
@@ -49,14 +55,19 @@ export function levelAfterOwnerTest(level: number, correct: number): number {
  * lowestLevel is the lowest level among the owner's squares of that subject.
  * ownedCount is how many squares of that subject the owner holds (at least 1).
  */
-export function rent(lowestLevel: number, correct: number, ownedCount = 1): number {
+export function rent(
+  lowestLevel: number,
+  correct: number,
+  ownedCount = 1,
+  rules: Rules = DEFAULT_RULES,
+): number {
   assertLevel(lowestLevel);
   assertCorrect(correct);
   if (!Number.isInteger(ownedCount) || ownedCount < 1) {
     throw new RangeError(`ownedCount must be an integer of at least 1, got ${ownedCount}`);
   }
   const multiplier = Math.min(ownedCount, MAX_SAME_SUBJECT_MULTIPLIER);
-  return lowestLevel * (BASE_RENT - pointsForCorrect(correct)) * multiplier;
+  return lowestLevel * (rules.baseRent - rentDiscountForCorrect(correct, rules)) * multiplier;
 }
 
 /**

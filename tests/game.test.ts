@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import boardData from "../data/board.json";
 import { parseBoard } from "../src/engine/board";
+import { BALANCED_RULES, TURN_LIMIT_PRESETS, withRules } from "../src/engine/rules";
 import { rollDie, seededRng } from "../src/engine/dice";
 import {
   STARTING_POINTS,
@@ -11,6 +12,7 @@ import {
   endTurn,
   getPlayer,
   moveCurrent,
+  standings,
   newGame,
   resolveClaim,
   resolveOwn,
@@ -197,6 +199,7 @@ describe("elimination", () => {
     const g = setPoints(own(game(), 1, "p2", 1), "p1", 10);
     const s = resolveVisit(moveCurrent(g, 1).state, 0);
     expect(s.winner).toBe("p2");
+    expect(s.ended).toBe("bankruptcy");
     expect(() => moveCurrent(s, 1)).toThrow("over");
   });
 
@@ -225,7 +228,7 @@ describe("endTurn", () => {
   });
 
   it("does nothing after the game is won", () => {
-    const over = { ...game(), winner: "p1" };
+    const over: GameState = { ...game(), ended: "bankruptcy", winner: "p1" };
     expect(endTurn(over)).toBe(over);
   });
 });
@@ -234,7 +237,7 @@ describe("whole seeded games keep the rules intact", () => {
   function play(seed: number, names: string[], maxTurns: number): GameState {
     const rng = seededRng(seed);
     let s = newGame(board, names);
-    for (let t = 0; t < maxTurns && s.winner === null; t++) {
+    for (let t = 0; t < maxTurns && s.ended === null; t++) {
       const moved = moveCurrent(s, rollDie(rng));
       s = moved.state;
       const correct = Math.floor(rng() * 6); // 0 to 5, a mix of skill levels
@@ -265,4 +268,92 @@ describe("whole seeded games keep the rules intact", () => {
       }
     });
   }
+});
+
+describe("rules presets", () => {
+  it("the balanced preset lowers the lap bonus and the points earned, but not the rent reductions", () => {
+    expect(BALANCED_RULES.lapBonus).toBe(50);
+    expect(BALANCED_RULES.pointsTable).toEqual([0, 5, 10, 15, 30, 50]);
+    expect(BALANCED_RULES.rentDiscount).toEqual([0, 10, 20, 30, 60, 100]);
+  });
+
+  it("a game uses the rules it was created with", () => {
+    const s = newGame(board, ["Ana", "Ben"], { rules: BALANCED_RULES });
+    const claimed = resolveClaim(moveCurrent(s, 1).state, 4);
+    expect(getPlayer(claimed, "p1").points).toBe(500 + 30);
+    const lap = moveCurrent(place(s, "p1", 38), 3).state;
+    expect(getPlayer(lap, "p1").points).toBe(550);
+  });
+
+  it("withRules changes only what it is given", () => {
+    const r = withRules({ startingPoints: 300 });
+    expect(r.startingPoints).toBe(300);
+    expect(r.lapBonus).toBe(100);
+    expect(newGame(board, ["Ana", "Ben"], { rules: r }).players[0]?.points).toBe(300);
+  });
+
+  it("offers 40, 80 and 120 turns as presets", () => {
+    expect([...TURN_LIMIT_PRESETS]).toEqual([40, 80, 120]);
+  });
+});
+
+describe("turn limit", () => {
+  /** Play empty turns (no test) until the game ends or we give up. */
+  function playTurns(s: GameState, count: number): GameState {
+    for (let i = 0; i < count && s.ended === null; i++) s = endTurn(s);
+    return s;
+  }
+
+  it("must be a positive whole number", () => {
+    expect(() => newGame(board, ["Ana", "Ben"], { turnLimit: 0 })).toThrow("turnLimit");
+    expect(() => newGame(board, ["Ana", "Ben"], { turnLimit: 2.5 })).toThrow("turnLimit");
+  });
+
+  it("ends only after every player has used all their turns", () => {
+    const g = newGame(board, ["Ana", "Ben"], { turnLimit: 3 });
+    const almost = playTurns(g, 5); // 2 players x 3 turns = 6 turns in total
+    expect(almost.ended).toBeNull();
+    expect(playTurns(g, 6).ended).toBe("turnLimit");
+    expect(playTurns(g, 6).turns).toBe(6);
+  });
+
+  it("the player with the most points wins", () => {
+    const g = setPoints(newGame(board, ["Ana", "Ben"], { turnLimit: 1 }), "p2", 700);
+    const end = playTurns(g, 2);
+    expect(end.ended).toBe("turnLimit");
+    expect(end.winner).toBe("p2");
+    expect(standings(end).map((p) => p.name)).toEqual(["Ben", "Ana"]);
+  });
+
+  it("breaks a tie in points by the total level of owned squares", () => {
+    let g = newGame(board, ["Ana", "Ben"], { turnLimit: 1 });
+    g = own(own(g, 1, "p1", 1), 2, "p2", 3);
+    expect(playTurns(g, 2).winner).toBe("p2");
+  });
+
+  it("an exact tie has no winner and lists who tied", () => {
+    const end = playTurns(newGame(board, ["Ana", "Ben"], { turnLimit: 1 }), 2);
+    expect(end.ended).toBe("turnLimit");
+    expect(end.winner).toBeNull();
+    expect(end.tied).toEqual(["p1", "p2"]);
+  });
+
+  it("no more moves are allowed after the limit", () => {
+    const end = playTurns(newGame(board, ["Ana", "Ben"], { turnLimit: 1 }), 2);
+    expect(() => moveCurrent(end, 1)).toThrow("over");
+    expect(endTurn(end)).toBe(end);
+  });
+
+  it("an eliminated player does not hold the game open", () => {
+    let g = newGame(board, ["Ana", "Ben", "Cy"], { turnLimit: 2 });
+    g = { ...g, players: g.players.map((p) => (p.id === "p3" ? { ...p, eliminated: true, points: 0 } : p)) };
+    expect(playTurns(g, 4).ended).toBe("turnLimit");
+  });
+
+  it("a bankruptcy before the limit ends the game as a bankruptcy", () => {
+    const g = setPoints(own(newGame(board, ["Ana", "Ben"], { turnLimit: 40 }), 1, "p2", 1), "p1", 10);
+    const s = resolveVisit(moveCurrent(g, 1).state, 0);
+    expect(s.ended).toBe("bankruptcy");
+    expect(s.winner).toBe("p2");
+  });
 });

@@ -9,7 +9,7 @@ import {
 
 describe("pointsForCorrect (RULES.md 5.1)", () => {
   it("matches the points table", () => {
-    expect([0, 1, 2, 3, 4, 5].map(pointsForCorrect)).toEqual([0, 10, 20, 30, 60, 100]);
+    expect([0, 1, 2, 3, 4, 5].map((c) => pointsForCorrect(c))).toEqual([0, 10, 20, 30, 60, 100]);
   });
 
   it("rejects values outside 0 to 5", () => {
