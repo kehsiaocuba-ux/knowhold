@@ -28,3 +28,7 @@ One short entry per working day. Newest at the bottom.
 ## Day 4
 - Added game state, turn flow, rent resolution and elimination, with tests (76 passing).
 - Ran simulated games: with equal skill the game can fail to end, so a stalemate rule is now an open question in RULES.md.
+
+## Day 5
+- Made the game numbers adjustable (Rules object) and ran balance simulations: see docs/BALANCE.md.
+- Added the turn limit chosen before the game, with a tie-break (88 tests passing).

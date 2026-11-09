@@ -162,7 +162,7 @@ The game can be played in **two teams**, with any number of members per team.
 - When a player is eliminated, all their owned squares become **free**: all ownership and all levels are removed.
 - If the final payment is more than the player can pay, only the part they can pay is charged. The rest is **forgiven**.
 - Play continues until only one player or team remains. That player or team **wins**.
-- **TBD:** tie-break when two players go below zero on the same turn.
+- **Turn limit:** before the game the players choose how many turns each will get (presets 40, 80 or 120, or any number). The game ends when every player still in it has used their turns, or earlier if only one player is left. At the turn limit the player with the most points wins; a tie is broken by the total level of owned squares; if still tied, the game is a draw. A lap limit is not used, because a fast player and a slow player would finish at very different times.
 - **Proposal:** before elimination, allow a player to sell or trade squares for points to avoid going below zero.
 
 ## 11. Training, tests and the Hall of Fame (summary of sheets not yet transcribed)
@@ -188,4 +188,4 @@ The author has additional sheets (not yet available) covering training sections,
 8. Negotiation rules.
 9. Tie-break when two players are eliminated on the same turn.
 10. Game HOF ranking order.
-11. Stalemate between equally skilled players. In simulated games with equal skill the game often never ends, because the lap bonus and test points outweigh rent (2 players at 80% skill: 137 of 150 games unfinished after 4000 turns). With clearly different skill the better player always wins in about 90 to 270 turns. Options: a turn or lap limit after which the most points wins, a smaller or shrinking lap bonus, or rent that grows over time.
+11. ~~Stalemate between equally skilled players.~~ Decided: a turn limit chosen before the game (section 10). The final numbers (lap bonus, points earned) are still being balanced, see docs/BALANCE.md.
