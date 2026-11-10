@@ -32,3 +32,7 @@ One short entry per working day. Newest at the bottom.
 ## Day 5
 - Made the game numbers adjustable (Rules object) and ran balance simulations: see docs/BALANCE.md.
 - Added the turn limit chosen before the game, with a tie-break (88 tests passing).
+
+## Day 6
+- Made the balanced setting (B) the default; the original numbers are kept as ORIGINAL_RULES.
+- Added grades (2nd to 12th, college) and four difficulties; designed Hall of Fame boards per difficulty (100 tests passing).
