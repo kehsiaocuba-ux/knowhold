@@ -1,0 +1,682 @@
+[
+  {
+    "id": "en-g7-normal-art-001",
+    "subject": "art",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Who painted the Mona Lisa?",
+    "choices": [
+      "Michelangelo",
+      "Leonardo da Vinci",
+      "Raphael",
+      "Vincent van Gogh"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-art-002",
+    "subject": "art",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which three colors are the primary colors in traditional painting?",
+    "choices": [
+      "Red, yellow and blue",
+      "Red, green and blue",
+      "Orange, green and purple",
+      "Black, white and gray"
+    ],
+    "answer": 0,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-art-003",
+    "subject": "art",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which art movement is the French painter Claude Monet most closely linked to?",
+    "choices": [
+      "Cubism",
+      "Impressionism",
+      "Surrealism",
+      "Pop art"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-art-004",
+    "subject": "art",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Who painted \"The Starry Night\"?",
+    "choices": [
+      "Claude Monet",
+      "Pablo Picasso",
+      "Vincent van Gogh",
+      "Salvador Dali"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-art-005",
+    "subject": "art",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "In which country did the Renaissance begin?",
+    "choices": [
+      "France",
+      "Italy",
+      "Spain",
+      "Germany"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-history-001",
+    "subject": "history",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "In what year did Christopher Columbus first reach the Americas?",
+    "choices": [
+      "1392",
+      "1492",
+      "1592",
+      "1692"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-history-002",
+    "subject": "history",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which document, sealed in 1215, limited the power of the English king?",
+    "choices": [
+      "The Magna Carta",
+      "The Mayflower Compact",
+      "The Bill of Rights",
+      "The Domesday Book"
+    ],
+    "answer": 0,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-history-003",
+    "subject": "history",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which ancient civilization built the pyramids at Giza?",
+    "choices": [
+      "The Romans",
+      "The Egyptians",
+      "The Greeks",
+      "The Aztecs"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-history-004",
+    "subject": "history",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "The Declaration of Independence of the United States was adopted in which year?",
+    "choices": [
+      "1776",
+      "1789",
+      "1812",
+      "1754"
+    ],
+    "answer": 0,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-history-005",
+    "subject": "history",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which ship carried the Pilgrims to North America in 1620?",
+    "choices": [
+      "Santa Maria",
+      "Mayflower",
+      "Endeavour",
+      "Titanic"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-sports-001",
+    "subject": "sports",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "How many players from one team are on the field at the same time in a soccer match?",
+    "choices": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-sports-002",
+    "subject": "sports",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "In which sport can a player score a touchdown?",
+    "choices": [
+      "Baseball",
+      "American football",
+      "Basketball",
+      "Tennis"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-sports-003",
+    "subject": "sports",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "How many rings are on the Olympic flag?",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-sports-004",
+    "subject": "sports",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which country hosted the 2016 Summer Olympic Games?",
+    "choices": [
+      "China",
+      "Greece",
+      "Brazil",
+      "United Kingdom"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-sports-005",
+    "subject": "sports",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "How many points is a free throw worth in basketball?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": 0,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-math-001",
+    "subject": "math",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is 3/4 + 1/8?",
+    "choices": [
+      "4/12",
+      "7/8",
+      "3/8",
+      "1 1/4"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-math-002",
+    "subject": "math",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Solve for x: 2x + 5 = 17",
+    "choices": [
+      "x = 5",
+      "x = 6",
+      "x = 11",
+      "x = 12"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-math-003",
+    "subject": "math",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is 15% of 200?",
+    "choices": [
+      "15",
+      "20",
+      "30",
+      "45"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-math-004",
+    "subject": "math",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is the area of a triangle with a base of 10 and a height of 6?",
+    "choices": [
+      "16",
+      "30",
+      "60",
+      "36"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-math-005",
+    "subject": "math",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is (-3) x (-4)?",
+    "choices": [
+      "-12",
+      "-7",
+      "7",
+      "12"
+    ],
+    "answer": 3,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-geography-001",
+    "subject": "geography",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which is the largest ocean on Earth?",
+    "choices": [
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Pacific Ocean",
+      "Arctic Ocean"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-geography-002",
+    "subject": "geography",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "On which continent is the Sahara Desert?",
+    "choices": [
+      "Asia",
+      "Africa",
+      "Australia",
+      "South America"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-geography-003",
+    "subject": "geography",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is the capital city of Canada?",
+    "choices": [
+      "Toronto",
+      "Vancouver",
+      "Ottawa",
+      "Montreal"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-geography-004",
+    "subject": "geography",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which river is the longest in South America?",
+    "choices": [
+      "Orinoco",
+      "Amazon",
+      "Parana",
+      "Magdalena"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-geography-005",
+    "subject": "geography",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which line of latitude is at 0 degrees?",
+    "choices": [
+      "The Equator",
+      "The Tropic of Cancer",
+      "The Prime Meridian",
+      "The Arctic Circle"
+    ],
+    "answer": 0,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-biology-001",
+    "subject": "biology",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which part of a cell produces most of the cell's energy?",
+    "choices": [
+      "Nucleus",
+      "Mitochondria",
+      "Ribosome",
+      "Cell wall"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-biology-002",
+    "subject": "biology",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which gas do plants take in from the air for photosynthesis?",
+    "choices": [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon dioxide",
+      "Hydrogen"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-biology-003",
+    "subject": "biology",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is the basic unit of life?",
+    "choices": [
+      "Atom",
+      "Cell",
+      "Organ",
+      "Tissue"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-biology-004",
+    "subject": "biology",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which part of the blood carries oxygen around the body?",
+    "choices": [
+      "Plasma",
+      "White blood cells",
+      "Platelets",
+      "Red blood cells"
+    ],
+    "answer": 3,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-biology-005",
+    "subject": "biology",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What do we call animals that eat only plants?",
+    "choices": [
+      "Carnivores",
+      "Omnivores",
+      "Herbivores",
+      "Decomposers"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-physics-001",
+    "subject": "physics",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is the SI unit of force?",
+    "choices": [
+      "Joule",
+      "Newton",
+      "Watt",
+      "Pascal"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-physics-002",
+    "subject": "physics",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which travels faster through air: light or sound?",
+    "choices": [
+      "Light",
+      "Sound",
+      "They travel at the same speed",
+      "It depends on the weather"
+    ],
+    "answer": 0,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-physics-003",
+    "subject": "physics",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which force pulls objects toward the Earth?",
+    "choices": [
+      "Friction",
+      "Magnetism",
+      "Gravity",
+      "Tension"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-physics-004",
+    "subject": "physics",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What do we call the energy an object has because it is moving?",
+    "choices": [
+      "Potential energy",
+      "Kinetic energy",
+      "Thermal energy",
+      "Chemical energy"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-physics-005",
+    "subject": "physics",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which of these materials is a good conductor of electricity?",
+    "choices": [
+      "Rubber",
+      "Wood",
+      "Copper",
+      "Glass"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-chemistry-001",
+    "subject": "chemistry",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is the chemical formula of water?",
+    "choices": [
+      "CO2",
+      "H2O",
+      "O2",
+      "NaCl"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-chemistry-002",
+    "subject": "chemistry",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is the chemical symbol for gold?",
+    "choices": [
+      "Ag",
+      "Au",
+      "Go",
+      "Gd"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-chemistry-003",
+    "subject": "chemistry",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which gas makes up most of the air we breathe?",
+    "choices": [
+      "Oxygen",
+      "Carbon dioxide",
+      "Nitrogen",
+      "Hydrogen"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-chemistry-004",
+    "subject": "chemistry",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "What is the pH of pure water, which is neutral?",
+    "choices": [
+      "0",
+      "7",
+      "10",
+      "14"
+    ],
+    "answer": 1,
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "en-g7-normal-chemistry-005",
+    "subject": "chemistry",
+    "grade": 7,
+    "difficulty": "normal",
+    "language": "en",
+    "text": "Which of these is a chemical change?",
+    "choices": [
+      "Ice melting",
+      "Paper being cut",
+      "Wood burning",
+      "Water boiling"
+    ],
+    "answer": 2,
+    "source": "original",
+    "reviewed": false
+  }
+]
