@@ -80,11 +80,11 @@ Skill setups: 2 players at 60% each (equal); 2 players at 70% and 50%; 4 players
 4. **Short games (40 turns) mostly end at the turn limit** in two-player games, whatever the setting. That is expected,
    and the winner is the player with the most points.
 
-## Suggested setting: B
+## Chosen setting: B
 
 Lap bonus 50, points earned halved, rent reductions unchanged. At 80 turns it gives bankruptcies in 76% of games
 between players of different skill and in 73% of four-player games between equals, while keeping the weakest-out-first
-rate at 72%. It is available as `BALANCED_RULES`. The engine default is still the original numbers until the author decides.
+rate at 72%. The author accepted it as the default (`DEFAULT_RULES` in the engine). The original numbers from the design notes are kept as `ORIGINAL_RULES`. To be checked again as more of the game is built.
 
 ## Limits of these simulations
 

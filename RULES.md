@@ -13,7 +13,7 @@ Knowhold is a trivia board game with property-style ownership. Players (or teams
 
 - 2 or more players, or two teams with any number of members each (see section 9).
 - Every player or team starts with **500 points**.
-- Every lap around the board earns **+100 points**, once per lap. A lap is completed by landing on or passing Start. Moving backward never removes a bonus and never pays the same lap twice.
+- Every lap around the board earns **+50 points**, once per lap. A lap is completed by landing on or passing Start. Moving backward never removes a bonus and never pays the same lap twice.
 
 ## 3. Board (page 1)
 
@@ -39,16 +39,16 @@ The board has **40 squares** to start, stored as data in [`data/board.json`](dat
 
 ### 5.1 Landing on an unowned square
 
-Answer **5 questions** of that subject. Points earned depend on correct answers:
+Answer **5 questions** of that subject. Points earned depend on correct answers. These are the balanced default numbers; the original notes used 0, 10, 20, 30, 60 and 100 (kept as `ORIGINAL_RULES` in the engine). See [docs/BALANCE.md](docs/BALANCE.md).
 
 | Correct | Points | Ownership |
 |---|---|---|
 | 0 | 0 | none |
-| 1 | 10 | none |
-| 2 | 20 | none |
-| 3 | 30 | none |
-| 4 | 60 | claim the square (level 1) |
-| 5 | 100 | claim the square (level 1) |
+| 1 | 5 | none |
+| 2 | 10 | none |
+| 3 | 15 | none |
+| 4 | 30 | claim the square (level 1) |
+| 5 | 50 | claim the square (level 1) |
 
 **TBD:** the notes say "Ownership" for 4 correct and "Ownership, 1 level" for 5 correct. This draft reads both as owning the square at level 1. Confirm.
 
@@ -61,10 +61,10 @@ You may take the test again. If you answer all **5 correctly**, you earn the poi
 
 ### 5.3 Landing on another player's square (rent)
 
-Answer 5 questions of that subject. Let **P(c)** be the points from the table above for `c` correct answers (0, 10, 20, 30, 60, 100), and `L` the level of the square.
+Answer 5 questions of that subject. Let **D(c)** be the rent reduction for `c` correct answers (0, 10, 20, 30, 60, 100), and `L` the level of the square. The reduction is not the same table as the points earned: the points were lowered in the balanced default, the rent reductions were not.
 
 ```
-rent = L × (100 − P(c))
+rent = L × (100 − D(c))
 ```
 
 | Correct | Level 1 | Level 2 | Level 3 |
@@ -78,14 +78,14 @@ rent = L × (100 − P(c))
 
 - If the visitor answers all **5 correctly**, they pay 0 and the square **loses one level**. A level 1 square loses its owner and becomes free. Level 2 drops to 1, and level 3 drops to 2.
 - The rent is paid to the owner. **TBD:** confirm that the owner receives it.
-- The points a visitor would earn act as a discount on the rent. **TBD:** confirm that the visitor does not also receive those points.
+- On someone else's square the visitor earns no test points: the correct answers only reduce the rent. **TBD:** confirm.
 
 ### 5.4 Owning several squares of the same subject (pages 6 and 7)
 
 When a visitor lands on a square whose owner holds more squares of the same subject, the rent is multiplied:
 
 ```
-rent = L × (100 − P(c)) × min(N, 3)
+rent = L × (100 − D(c)) × min(N, 3)
 ```
 
 where `N` is the number of squares of that subject the owner holds, and `L` is the **lowest level** among those squares (not the level of the square landed on).
@@ -173,7 +173,8 @@ The author has additional sheets (not yet available) covering training sections,
 - **Tests:** fixed-length tests, for example **50 consecutive Art questions at normal level**.
 - **Test HOF:** two categories, **speed to answer** and **accuracy**. The score combines both, with **accuracy weighted more**.
   **Proposal:** `score = 0.7 × accuracy + 0.3 × speed`, where accuracy is correct ÷ total and speed is the average time per correct answer compared with a par time for the difficulty, limited to 0 to 1. The weights go in a config file.
-- **Game HOF:** based on the **number of players** and the **number of turns**. One board per player count. **TBD:** ranking order (fewest turns, or final points first).
+- **Grades and difficulty:** questions are written for a school grade (2nd to 12th, then college) and one of four difficulties: easy, normal, hard, hardest. Grade and difficulty are chosen before the game, like the turn limit. See [docs/DIFFICULTY_AND_HALL_OF_FAME.md](docs/DIFFICULTY_AND_HALL_OF_FAME.md).
+- **Game HOF:** one board for each combination of **number of players**, **turn limit** and **difficulty**, so a win on hardest is recognised separately from a win on easy. The grade is stored with every entry. **TBD:** ranking order (final points first, then fewer turns, is the current proposal).
 - The HOF stores only nicknames, scores, modes and dates. No emails or real names.
 
 ## 12. Open questions (collected)
@@ -189,3 +190,4 @@ The author has additional sheets (not yet available) covering training sections,
 9. Tie-break when two players are eliminated on the same turn.
 10. Game HOF ranking order.
 11. ~~Stalemate between equally skilled players.~~ Decided: a turn limit chosen before the game (section 10). The final numbers (lap bonus, points earned) are still being balanced, see docs/BALANCE.md.
+12. Grades and difficulty: one grade per game or one per player? What does each difficulty mean at each grade? Does difficulty change the points? How many questions to write first? See docs/DIFFICULTY_AND_HALL_OF_FAME.md.
