@@ -6,10 +6,15 @@ import {
   pointsForCorrect,
   rent,
 } from "../src/engine/scoring";
+import { ORIGINAL_RULES } from "../src/engine/rules";
 
 describe("pointsForCorrect (RULES.md 5.1)", () => {
-  it("matches the points table", () => {
-    expect([0, 1, 2, 3, 4, 5].map((c) => pointsForCorrect(c))).toEqual([0, 10, 20, 30, 60, 100]);
+  it("matches the default (balanced) points table", () => {
+    expect([0, 1, 2, 3, 4, 5].map((c) => pointsForCorrect(c))).toEqual([0, 5, 10, 15, 30, 50]);
+  });
+
+  it("matches the original points table from the notes when asked", () => {
+    expect([0, 1, 2, 3, 4, 5].map((c) => pointsForCorrect(c, ORIGINAL_RULES))).toEqual([0, 10, 20, 30, 60, 100]);
   });
 
   it("rejects values outside 0 to 5", () => {

@@ -16,8 +16,8 @@ export interface Rules {
   rentDiscount: readonly number[];
 }
 
-/** The rules as written in the original design notes. */
-export const DEFAULT_RULES: Rules = {
+/** The numbers exactly as written in the original design notes (kept for comparison and tests). */
+export const ORIGINAL_RULES: Rules = {
   startingPoints: 500,
   lapBonus: 100,
   pointsTable: [0, 10, 20, 30, 60, 100],
@@ -25,20 +25,20 @@ export const DEFAULT_RULES: Rules = {
   rentDiscount: [0, 10, 20, 30, 60, 100],
 };
 
+/**
+ * The default balance, chosen from the simulations in docs/BALANCE.md (setting B):
+ * lap bonus 50, points earned by tests halved, rent reductions unchanged.
+ */
+export const DEFAULT_RULES: Rules = {
+  ...ORIGINAL_RULES,
+  lapBonus: 50,
+  pointsTable: [0, 5, 10, 15, 30, 50],
+};
+
 /** Copy of the rules with some values changed, used by the balance simulations. */
 export function withRules(changes: Partial<Rules>, base: Rules = DEFAULT_RULES): Rules {
   return { ...base, ...changes };
 }
-
-/**
- * Suggested balance from the simulations in docs/BALANCE.md:
- * lap bonus 50, points earned by tests halved, rent reductions unchanged.
- * Not the default until the author decides.
- */
-export const BALANCED_RULES: Rules = withRules({
-  lapBonus: 50,
-  pointsTable: [0, 5, 10, 15, 30, 50],
-});
 
 /** Turn limits offered before a game (turns per player). Any positive whole number is also allowed. */
 export const TURN_LIMIT_PRESETS = [40, 80, 120] as const;

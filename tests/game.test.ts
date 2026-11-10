@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import boardData from "../data/board.json";
 import { parseBoard } from "../src/engine/board";
-import { BALANCED_RULES, TURN_LIMIT_PRESETS, withRules } from "../src/engine/rules";
+import { DEFAULT_RULES, ORIGINAL_RULES, TURN_LIMIT_PRESETS, withRules } from "../src/engine/rules";
 import { rollDie, seededRng } from "../src/engine/dice";
 import {
   STARTING_POINTS,
@@ -23,8 +23,9 @@ import {
 const board = parseBoard(boardData);
 // Board positions used below: 1 art, 11 art, 23 art, 2 history, 0 start, 9 any.
 
+/** Most tests use the original numbers from the design notes, so their expectations stay easy to read. */
 function game(names = ["Ana", "Ben"]): GameState {
-  return newGame(board, names);
+  return newGame(board, names, { rules: ORIGINAL_RULES });
 }
 
 /** Put a player on a board position (test helper). */
@@ -271,29 +272,60 @@ describe("whole seeded games keep the rules intact", () => {
 });
 
 describe("rules presets", () => {
-  it("the balanced preset lowers the lap bonus and the points earned, but not the rent reductions", () => {
-    expect(BALANCED_RULES.lapBonus).toBe(50);
-    expect(BALANCED_RULES.pointsTable).toEqual([0, 5, 10, 15, 30, 50]);
-    expect(BALANCED_RULES.rentDiscount).toEqual([0, 10, 20, 30, 60, 100]);
+  it("the default is the balanced setting: lower lap bonus and points earned, same rent reductions", () => {
+    expect(DEFAULT_RULES.lapBonus).toBe(50);
+    expect(DEFAULT_RULES.pointsTable).toEqual([0, 5, 10, 15, 30, 50]);
+    expect(DEFAULT_RULES.rentDiscount).toEqual([0, 10, 20, 30, 60, 100]);
   });
 
-  it("a game uses the rules it was created with", () => {
-    const s = newGame(board, ["Ana", "Ben"], { rules: BALANCED_RULES });
+  it("the original numbers from the notes are kept", () => {
+    expect(ORIGINAL_RULES.lapBonus).toBe(100);
+    expect(ORIGINAL_RULES.pointsTable).toEqual([0, 10, 20, 30, 60, 100]);
+  });
+
+  it("a new game uses the default rules unless told otherwise", () => {
+    const s = newGame(board, ["Ana", "Ben"]);
     const claimed = resolveClaim(moveCurrent(s, 1).state, 4);
     expect(getPlayer(claimed, "p1").points).toBe(500 + 30);
     const lap = moveCurrent(place(s, "p1", 38), 3).state;
     expect(getPlayer(lap, "p1").points).toBe(550);
   });
 
+  it("a game can use the original rules", () => {
+    const s = newGame(board, ["Ana", "Ben"], { rules: ORIGINAL_RULES });
+    const claimed = resolveClaim(moveCurrent(s, 1).state, 4);
+    expect(getPlayer(claimed, "p1").points).toBe(560);
+  });
+
   it("withRules changes only what it is given", () => {
     const r = withRules({ startingPoints: 300 });
     expect(r.startingPoints).toBe(300);
-    expect(r.lapBonus).toBe(100);
+    expect(r.lapBonus).toBe(50);
     expect(newGame(board, ["Ana", "Ben"], { rules: r }).players[0]?.points).toBe(300);
   });
 
   it("offers 40, 80 and 120 turns as presets", () => {
     expect([...TURN_LIMIT_PRESETS]).toEqual([40, 80, 120]);
+  });
+});
+
+describe("grade and difficulty", () => {
+  it("default to no grade and normal difficulty", () => {
+    const s = newGame(board, ["Ana", "Ben"]);
+    expect(s.grade).toBeNull();
+    expect(s.difficulty).toBe("normal");
+  });
+
+  it("are kept in the game state, so the Hall of Fame can record them", () => {
+    const s = newGame(board, ["Ana", "Ben"], { grade: 6, difficulty: "hardest" });
+    expect(s.grade).toBe(6);
+    expect(s.difficulty).toBe("hardest");
+    expect(newGame(board, ["Ana", "Ben"], { grade: "college" }).grade).toBe("college");
+  });
+
+  it("reject values that do not exist", () => {
+    expect(() => newGame(board, ["Ana", "Ben"], { difficulty: "impossible" as never })).toThrow("difficulty");
+    expect(() => newGame(board, ["Ana", "Ben"], { grade: 13 as never })).toThrow("grade");
   });
 });
 

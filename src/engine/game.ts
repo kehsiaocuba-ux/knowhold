@@ -10,6 +10,7 @@
 
 import { type Board, type Square, type Subject, isSubject, squareAt } from "./board";
 import { type Piece, movePiece, newPiece, positionOf } from "./movement";
+import { type Difficulty, type Grade, isDifficulty, isGrade } from "./levels";
 import { DEFAULT_RULES, type Rules } from "./rules";
 import {
   claimsOwnership,
@@ -43,6 +44,10 @@ export interface GameOptions {
   rules?: Rules;
   /** Turns per player chosen before the game (for example 40, 80 or 120). null means no limit. */
   turnLimit?: number | null;
+  /** School grade the questions are written for. null until grades are chosen. */
+  grade?: Grade | null;
+  /** Difficulty of the questions. Defaults to "normal". */
+  difficulty?: Difficulty;
 }
 
 export interface GameState {
@@ -57,6 +62,10 @@ export interface GameState {
   turns: number;
   /** Turns each player gets, or null for no limit. */
   turnLimit: number | null;
+  /** School grade of the questions, or null if not chosen. */
+  grade: Grade | null;
+  /** Difficulty of the questions; the Hall of Fame keeps one board per difficulty. */
+  difficulty: Difficulty;
   /** Why the game ended, or null while it is still running. */
   ended: GameEnd | null;
   /** Id of the winner. Null while running, and also null after a turn limit that ended in an exact tie. */
@@ -87,6 +96,14 @@ export type Landing =
 export function newGame(board: Board, names: string[], options: GameOptions = {}): GameState {
   const rules = options.rules ?? DEFAULT_RULES;
   const turnLimit = options.turnLimit ?? null;
+  const grade = options.grade ?? null;
+  const difficulty = options.difficulty ?? "normal";
+  if (grade !== null && !isGrade(grade)) {
+    throw new Error(`unknown grade ${JSON.stringify(grade)}`);
+  }
+  if (!isDifficulty(difficulty)) {
+    throw new Error(`unknown difficulty ${JSON.stringify(difficulty)}`);
+  }
   if (turnLimit !== null && (!Number.isInteger(turnLimit) || turnLimit < 1)) {
     throw new Error(`turnLimit must be a whole number of at least 1, got ${turnLimit}`);
   }
@@ -115,6 +132,8 @@ export function newGame(board: Board, names: string[], options: GameOptions = {}
     current: 0,
     turns: 0,
     turnLimit,
+    grade,
+    difficulty,
     ended: null,
     winner: null,
     tied: [],
