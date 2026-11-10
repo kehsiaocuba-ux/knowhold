@@ -36,3 +36,8 @@ One short entry per working day. Newest at the bottom.
 ## Day 6
 - Made the balanced setting (B) the default; the original numbers are kept as ORIGINAL_RULES.
 - Added grades (2nd to 12th, college) and four difficulties; designed Hall of Fame boards per difficulty (100 tests passing).
+
+## Day 7
+- Added the question format, validator and loader (136 tests passing).
+- Wrote a 40-question starter set for 7th grade (draft, not yet reviewed by a person).
+- Chose the first grades to write: 7th, 8th, 9th and 10th.

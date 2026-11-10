@@ -18,9 +18,9 @@ Planned work, in order. Each item becomes one or more GitHub issues.
 - [ ] Unit tests covering every table in RULES.md
 
 ## Phase 2: Questions
-- [ ] Question file format (JSON) and validator
+- [x] Question file format (JSON) and validator
 - [ ] Starter English question set for each subject
-- [ ] Loader that picks 5 non-repeating questions per square
+- [x] Loader that picks 5 non-repeating questions per square
 - [ ] Spanish question set
 - [ ] Document data sources and licenses
 
